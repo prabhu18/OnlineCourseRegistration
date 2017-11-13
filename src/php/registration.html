@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Project Registartion</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="registraion_validation.js" type="text/javascript"></script>
+</head>
+<body>
+    <section>
+        <h2>Registration Form</h2>
+        <form >
+            NetId:
+            <input type="text" name="username" placeholder="NetId" id="netId">
+            <br />
+            Password:
+            <input type="password" name="password" placeholder="Password" id="password">
+            <br />
+			 Confirm Password:
+            <input type="password" name="password" placeholder="Confirm Password" id="confirm_password">
+            <br />
+			 First Name:
+            <input type="text" name="fName" placeholder="First Name" id="fName">
+            <br />
+			 Last Name:
+            <input type="text" name="lName" placeholder="Last Name" id="lName">
+            <br />
+			 Major:
+ <select id="major">
+  <option value="0">Your Major</option>
+  <option value="CS">Computer Science</option>
+  <option value="ITM">ITM</option>
+  <option value="MSBA">MSBA</option>
+</select>
+            <br />
+
+			 Degree:
+ <select id="degree">
+  <option value="0">Your Degree</option>
+  <option value="Graduate">Graduate</option>
+  <option value="Under-Graduate">Under-Graduate</option>
+</select>
+            <br />
+
+		Gender:
+		<input type="radio" name="gender" value="male" id="male"> Male
+  <input type="radio" name="gender" value="female" id="female"> Female<br>
+   <p id="gender_error">Please select your gender</p>
+			 Email:
+            <input type="email" name="email" placeholder="Email" id="email">
+            <br />
+			 Phone:
+            <input type="text" name="number" placeholder="Number" id="number">
+            <br />
+
+            <input type="button" value="Validate" id="validate">
+        </form>
+
+    </section>
+
+</body>
+</html>
