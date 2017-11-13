@@ -2,58 +2,56 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>Project Registartion</title>
+    <title>Registration</title>
+    <link type="text/css" rel="stylesheet" href="../css/common.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="registraion_validation.js" type="text/javascript"></script>
+    <script src="../js/registration.js" type="text/javascript"></script>
 </head>
 <body>
     <section>
         <h2>Registration Form</h2>
-        <form >
-            NetId:
-            <input type="text" name="username" placeholder="NetId" id="netId">
-            <br />
-            Password:
-            <input type="password" name="password" placeholder="Password" id="password">
-            <br />
-			 Confirm Password:
-            <input type="password" name="password" placeholder="Confirm Password" id="confirm_password">
-            <br />
-			 First Name:
-            <input type="text" name="fName" placeholder="First Name" id="fName">
-            <br />
-			 Last Name:
-            <input type="text" name="lName" placeholder="Last Name" id="lName">
-            <br />
-			 Major:
- <select id="major">
-  <option value="0">Your Major</option>
-  <option value="CS">Computer Science</option>
-  <option value="ITM">ITM</option>
-  <option value="MSBA">MSBA</option>
-</select>
-            <br />
+        <form action="registration.php" method="post">
+            <label class="required">NetId</label>
+            <input type="text" name="username" placeholder="NetId" id="netId" required><br/>
 
-			 Degree:
- <select id="degree">
-  <option value="0">Your Degree</option>
-  <option value="Graduate">Graduate</option>
-  <option value="Under-Graduate">Under-Graduate</option>
-</select>
-            <br />
+            <label class="required"> Password</label>
+            <input type="password" name="password" placeholder="Password" id="password"><br/>
 
-		Gender:
-		<input type="radio" name="gender" value="male" id="male"> Male
-  <input type="radio" name="gender" value="female" id="female"> Female<br>
-   <p id="gender_error">Please select your gender</p>
-			 Email:
-            <input type="email" name="email" placeholder="Email" id="email">
-            <br />
-			 Phone:
-            <input type="text" name="number" placeholder="Number" id="number">
-            <br />
+			      <label class="required">Confirm Password</label>
+            <input type="password" name="password" placeholder="Confirm Password" id="confirm_password"><br/>
 
-            <input type="button" value="Validate" id="validate">
+			      <label class="required">First Name</label>
+            <input type="text" name="fName" placeholder="First Name" id="fName"><br/>
+
+			      <label class="required">Last Name</label>
+            <input type="text" name="lName" placeholder="Last Name" id="lName"><br/>
+
+            <label class="required">Major</label>
+            <select id="major">
+              <option value="0">Your Major</option>
+              <option value="CS">Computer Science</option>
+              <option value="ITM">ITM</option>
+              <option value="MSBA">MSBA</option>
+            </select><br/>
+
+            <label class="required">Degree</label>
+            <select id="degree">
+              <option value="0">Your Degree</option>
+              <option value="Graduate">Graduate</option>
+              <option value="Under-Graduate">Under-Graduate</option>
+            </select><br/>
+
+      		  <label>Gender</label>
+      		    <input type="radio" name="gender" value="male" id="male"> Male
+              <input type="radio" name="gender" value="female" id="female"> Female<br/>
+
+            <label class="required">Email</label>
+            <input type="text" name="email" placeholder="Email" id="email"><br/>
+
+			      <label class="required">Phone</label>
+            <input type="text" name="number" placeholder="Number" id="number"><br/>
+
+            <input type="submit" id="validate">
         </form>
 
     </section>

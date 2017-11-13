@@ -1,4 +1,4 @@
-input {
+input[type=text],[type=password],[type=button],[type=submit],select {
     width: 100%;
     padding: 10px 20px;
     margin: 8px 0;
@@ -7,13 +7,12 @@ input {
 
 section {
     width: 700px;
-    height: 300px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 40px;
 }
 
-button {
+button,input[type=submit] {
     background-color: #FFC107;
     border: none;
     color: white;
@@ -27,3 +26,9 @@ button {
 input:focus {
     border: 2px solid green;
 }
+.error {
+    color: red;
+    font-size: 20px;
+}
+
+.required:after { content:" *"; }
