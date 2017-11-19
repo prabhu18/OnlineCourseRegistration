@@ -11,10 +11,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     exit();
   }
   else{
-    $sql="SELECT * FROM cr_student WHERE user_id= '$usernameData'" ;
+    $password="";
+    $sql="SELECT password FROM cr_student WHERE user_id= '$usernameData'" ;
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
-      header("location:homepage.html");
+      while($row = mysqli_fetch_assoc($result)){
+        $password= $row["password"];
+      }
+    }else {
+      echo "<script>
+          alert('Incorrect username and password combination');
+            window.location.href='login.html';
+            </script>";
+    }
+    if (password_verify($paswordData, $password)) {
+        header("location:homepage.php");
+    }else {
+      echo "password not matching";
+      echo "\nfetch password:".$password;
+      echo "\ngiven password:".$paswordData;
     }
   }
 }

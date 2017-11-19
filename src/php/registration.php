@@ -20,15 +20,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
    exit();
   }else{
    $name = $fName." ".$lName;
-   $sql ="CALL register_a_user ('$username','$name','$password','$degree','$major',$phone,'$email','$gender') ";
+   $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+   $sql ="CALL register_a_user ('$username','$name','$hashed_password','$degree','$major',$phone,'$email','$gender') ";
 
    $result = mysqli_query($conn,$sql);
    if (mysqli_num_rows($result) > 0) {
      while($row = mysqli_fetch_assoc($result)){
-       echo $row["result"];
+       //echo $row["result"];
+      if (strcmp($row["result"],"registration complete") == 0) {
+        header('Location:login.html');
+      }elseif (strcmp($row["result"],"net id already present") == 0) {
+        echo "<script>
+            alert('Username already exists please login');
+              window.location.href='login.html';
+              </script>";
+      }else {
+        echo "<script>
+            alert('Username Not found in University Database, please try again');
+              window.location.href='registration.html';
+              </script>";
+      }
      }
    }else{
-     echo "Error in DB call";
+     echo "<script>
+         alert('Something is wrong, Please try again');
+           window.location.href='registration.html';
+           </script>";
    }
 
 
