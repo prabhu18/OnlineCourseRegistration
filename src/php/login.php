@@ -1,6 +1,6 @@
 <?php
 include 'connection.php';
-
+session_start();
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
   $usernameData= test_data($_POST["username"]);
@@ -14,7 +14,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $sql="SELECT * FROM cr_student WHERE user_id= '$usernameData'" ;
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
-      header("location:homepage.html");
+      $_SESSION["username"] = $usernameData;
+      header("location:homepage.php");
     }
   }
 }

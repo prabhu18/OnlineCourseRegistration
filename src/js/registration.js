@@ -1,7 +1,5 @@
 $(document).ready(function () {
 	hideErrors();
-
-
 	$("#password").focus(function () {
          //Remove all the post-validation notifications
         $("#pwd_error").remove();
@@ -39,11 +37,12 @@ $(document).ready(function () {
 		varErr=true;
 		$("#confirm_password").after("<span id='confirm_pwd_error'>Confirm Password field cannot be empty.</span>");
 		$("#confirm_pwd_error").addClass("error");
-	}else{
-	if($("#confirm_password").val() != $("#password").val()){
-		varErr=true;
-		$("#confirm_password").after("<span id='confirm_pwd_error'>Passwords do not match</span>");
-		$("#confirm_pwd_error").addClass("error");
+	}
+	else{
+			if($("#confirm_password").val() != $("#password").val()){
+				varErr=true;
+				$("#confirm_password").after("<span id='confirm_pwd_error'>Passwords do not match</span>");
+				$("#confirm_pwd_error").addClass("error");
 	}
 	}
 
