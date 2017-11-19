@@ -15,7 +15,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $sql="SELECT password FROM cr_student WHERE user_id= '$usernameData'" ;
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
-<<<<<<< HEAD
+
       while($row = mysqli_fetch_assoc($result)){
         $password= $row["password"];
       }
