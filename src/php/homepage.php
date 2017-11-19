@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-<?php echo "kk" ?>
-=======
+
 <?php
 include 'connection.php';
 session_start();
@@ -58,4 +56,3 @@ echo "$session_username";
 <?php
 
  ?>
->>>>>>> 89866fb3d6e05971ab78ac1150799b66b8cbb45f

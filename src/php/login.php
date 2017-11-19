@@ -31,10 +31,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       echo "password not matching";
       echo "\nfetch password:".$password;
       echo "\ngiven password:".$paswordData;
-=======
+
       $_SESSION["username"] = $usernameData;
       header("location:homepage.php");
->>>>>>> 89866fb3d6e05971ab78ac1150799b66b8cbb45f
     }
   }
 }
