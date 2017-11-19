@@ -4,7 +4,6 @@ include 'connection.php';
 session_start();
 $session_username="";
 $session_username= $_SESSION['username'];
-echo "$session_username";
 
     $sql="SELECT name FROM cr_student WHERE user_id= '$session_username'" ;
     $result = mysqli_query($conn, $sql);
@@ -78,6 +77,3 @@ echo "$session_username";
     </section>
 </body>
 </html>
-<?php
-
- ?>
