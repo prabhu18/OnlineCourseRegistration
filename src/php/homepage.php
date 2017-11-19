@@ -1,4 +1,3 @@
-<?php echo "kk" ?>
 <?php
 include 'connection.php';
 session_start();
