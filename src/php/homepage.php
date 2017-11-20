@@ -1,20 +1,7 @@
 <?php
 include 'connection.php';
 session_start();
-<<<<<<< HEAD
-$session_username= $_SESSION['username'];
-=======
 $session_username = $_SESSION['username'];
-
-$sql    = "SELECT name FROM cr_student WHERE user_id= '$session_username'";
-$result = mysqli_query($conn, $sql);
-if (mysqli_num_rows($result) > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        echo "<h1>Welcome," . $row["name"] . "</h1>";
-    }
-}
-
->>>>>>> d63d39a16991d22cb868f07f5f4c6c7fe118f11e
 ?>
 <html lang="en">
 <head>
