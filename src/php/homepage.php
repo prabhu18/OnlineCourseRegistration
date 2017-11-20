@@ -1,17 +1,7 @@
 <?php
 include 'connection.php';
 session_start();
-$session_username="";
 $session_username= $_SESSION['username'];
-
-    $sql="SELECT name FROM cr_student WHERE user_id= '$session_username'" ;
-    $result = mysqli_query($conn, $sql);
-    if (mysqli_num_rows($result) > 0) {
-      while($row = mysqli_fetch_assoc($result)){
-        echo "<h1>Welcome,". $row["name"]. "</h1>";
-      }
-    }
-
 ?>
 <html lang="en">
 <head>
@@ -21,6 +11,28 @@ $session_username= $_SESSION['username'];
 
 </head>
 <body>
+  <article>
+    <?php
+    $name=$degree=$major=$email=$phone=$gender="";
+    $sql="SELECT name,degree,major,email,phone,gender FROM cr_student WHERE user_id= '$session_username'" ;
+    $result = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($result) > 0) {
+      while($row = mysqli_fetch_assoc($result)){
+        $name = $row['name'];
+        $degree = $row['degree'];
+        $major = $row['major'];
+        $email = $row['email'];
+        $phone = $row['phone'];
+        $gender = $row['gender'];
+      }
+    }else {
+      echo "User data not found";
+    }
+    echo "<h3>Name : $name <br/> Degree : $degree
+    <br/> Major : $major <br/> Email : $email<br/> Phone : $phone
+    <br/> Gender : $gender</h3>";
+    ?>
+  </article>
     <section>
   		<h2>Online Course Registration login</h2>
 <form action="#" method="GET">
