@@ -32,7 +32,7 @@ $session_username = $_SESSION['username'];
               //echo $pieces[2];
               $sql3="INSERT INTO cr_cart(cart_id,course_id,instructor_id,semester) VALUES('$session_username','$pieces[0]','$pieces[1]','$pieces[2]') ";
               mysqli_query($conn, $sql3);
-
+              }
               $sql4="SELECT course_id,instructor_id,semester FROM cr_cart WHERE cart_id= '$session_username'";
               $result4=mysqli_query($conn, $sql4);
 
@@ -44,11 +44,11 @@ $session_username = $_SESSION['username'];
                     echo "<td>" . $row['semester'] . "</td>";
                     echo "</tr>";
                   }
-                  echo "</table>";
-                  echo "<button id='enroll'>Enroll</button>";
-                  echo "</form>";
               }
-          }
+              echo "</table>";
+              echo "<button id='enroll'>Enroll</button>";
+              echo "</form>";
+
         }
           ?>
 

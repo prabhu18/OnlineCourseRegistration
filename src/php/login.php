@@ -26,17 +26,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
               echo 0;
       }
     }
-
-    if (password_verify($paswordData, $password)) {
-      $_SESSION["username"] = $usernameData;
-      header("location:homepage.php");
-    }else {
-      echo "password not matching";
-      echo "\nfetch password:".$password;
-      echo "\ngiven password:".$paswordData;
-
-
-  else {
+    else {
       echo 2;
 
     }
