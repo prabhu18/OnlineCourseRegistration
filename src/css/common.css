@@ -1,3 +1,15 @@
+table, td, th {
+    border: 1px solid black;
+}
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    height: 50px;
+}
 input[type=text],[type=password],[type=button],[type=submit],select {
     width: 100%;
     padding: 10px 20px;
@@ -10,7 +22,7 @@ section {
     margin-left: auto;
     margin-right: auto;
     margin-top: 40px;
-    background-color: #ffe15b;
+    background-color: #f5e391;
 }
 
 button,input[type=submit] {

@@ -15,7 +15,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $sql="SELECT password FROM cr_student WHERE user_id= '$usernameData'" ;
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
-<<<<<<< HEAD
+
       while($row = mysqli_fetch_assoc($result)){
         $password= $row["password"];
       }
@@ -31,10 +31,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       echo "password not matching";
       echo "\nfetch password:".$password;
       echo "\ngiven password:".$paswordData;
-=======
+
       $_SESSION["username"] = $usernameData;
       header("location:homepage.php");
->>>>>>> 89866fb3d6e05971ab78ac1150799b66b8cbb45f
+
     }
   }
 }

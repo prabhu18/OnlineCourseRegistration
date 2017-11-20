@@ -11,29 +11,7 @@ $session_username= $_SESSION['username'];
         echo "<h1>Welcome,". $row["name"]. "</h1>";
       }
     }
-    if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-      $major=$_POST["Major"];
-      $degree=$_POST["Degree"];
-      $sem=$_POST["Semester"];
-
-    }
-    echo "$major";
-    echo "$degree";
-    echo "$sem";
-    $sql2="";
-    $result2 = mysqli_query($conn, $sql2);
-
-		if (mysqli_num_rows($result2) > 0) {
-					while($row = mysqli_fetch_assoc($result)) {
-						echo "<tr>";
-						echo "<td>" . $row['name'] . "</td>";
-						echo "<td>" . $row['year'] . "</td>";
-						echo "<td>" . $row['ranking'] . "</td>";
-						echo "<td>" . $row['gender'] . "</td>";
-						echo "</tr>";
-					}
-		}
 ?>
 <html lang="en">
 <head>
@@ -45,7 +23,7 @@ $session_username= $_SESSION['username'];
 <body>
     <section>
   		<h2>Online Course Registration login</h2>
-<form action="#" method="POST">
+<form action="#" method="GET">
       <label>Degree:</label>
       <select name="Degree">
         <option value="Graduate">Graduate</option>
@@ -73,6 +51,47 @@ $session_username= $_SESSION['username'];
         <button id="search">Search</button>
 
       </form>
-    </section>
+
+<?php
+$course_id=$instructor_id=$semester="";
+if($_SERVER["REQUEST_METHOD"] == "GET"){
+
+  $major=$_GET["Major"];
+  $degree=$_GET["Degree"];
+  $sem=$_GET["Semester"];
+
+}
+
+$sql2="CALL view_all_courses('$degree','$major','$sem') ";
+$result2 = mysqli_query($conn, $sql2);
+
+echo "<form action='homepageValidation.php' method='POST'>
+      <table>
+        <tr>
+          <th>course_id</th>
+          <th>instructor_id</th>
+          <th>Semester</th>
+          <th>Check</th>
+        </tr>";
+if (mysqli_num_rows($result2) > 0) {
+      while($row = mysqli_fetch_assoc($result2)) {
+
+        $checkbox=$row['course_id'].$row['instructor_id'] ;
+        $x=$row['course_id'];
+        $_SESSION['key'] =  $row['course_id'];
+        echo "<tr>";
+        echo "<td>" . $row['course_id'] . "</td>";
+        echo "<td>" .$row['instructor_id'] . "</td>";
+        echo "<td>" .$row['semester']. "</td>";
+        echo "<td> <input type='submit'> </td>";
+        echo "</tr>";
+      }
+
+      echo "</table>";
+      echo "</form>";
+
+}
+?>
+</section>
 </body>
 </html>
