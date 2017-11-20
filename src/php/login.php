@@ -7,7 +7,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   $paswordData= test_data($_POST["password"]);
 
   if(empty($usernameData)|| empty($paswordData)){
-    header("location:login.html");
     header("location:registration.html");
     exit();
   }
