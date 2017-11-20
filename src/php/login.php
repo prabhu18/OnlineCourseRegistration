@@ -11,6 +11,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     exit();
   }
   else{
+
     $password="";
     $sql="SELECT password FROM cr_student WHERE user_id= '$usernameData'" ;
     $result = mysqli_query($conn, $sql);
@@ -25,8 +26,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
               echo 0;
       }
     }
-  else {
+    else {
       echo 2;
+
     }
   }
 }
