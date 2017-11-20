@@ -1,7 +1,20 @@
 <?php
 include 'connection.php';
 session_start();
+<<<<<<< HEAD
 $session_username= $_SESSION['username'];
+=======
+$session_username = $_SESSION['username'];
+
+$sql    = "SELECT name FROM cr_student WHERE user_id= '$session_username'";
+$result = mysqli_query($conn, $sql);
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo "<h1>Welcome," . $row["name"] . "</h1>";
+    }
+}
+
+>>>>>>> d63d39a16991d22cb868f07f5f4c6c7fe118f11e
 ?>
 <html lang="en">
 <head>
@@ -34,8 +47,6 @@ $session_username= $_SESSION['username'];
     ?>
   </article>
     <section>
-  		<h2>Online Course Registration login</h2>
-<form action="#" method="GET">
           <h2>Online Course Registration login</h2>
       <form action="#" method="GET">
       <label>Degree:</label>
@@ -49,11 +60,6 @@ $session_username= $_SESSION['username'];
       <label>Major:</label>
       <select name="Major">
 
-        <option value="Computer Science"<?= $_REQUEST["Major"]=="Computer Science"?" selected='selected'":"" ?>>Computer Science</option>
-        <option value="Mechanical Engineering"<?= $_REQUEST["Major"]=="Mechanical Engineering"?" selected='selected'":"" ?>>Mechanical Engineering</option>
-        <option value="itm"<?= $_REQUEST["Major"]=="itm"?" selected='selected'":"" ?>>ITM</option>
-        <option value="Electrical Engineering"<?= $_REQUEST["Major"]=="Electrical Engineering"?" selected='selected'":"" ?>>Electrical Engineering</option>
-        <option value="All"<?= $_REQUEST["Major"]=="All"?" selected='selected'":"" ?>>All</option>
         <option value="Computer Science"<?= $_REQUEST["Major"] == "Computer Science" ? " selected='selected'" : "" ?>>Computer Science</option>
         <option value="Mechanical Engineering"<?= $_REQUEST["Major"] == "Mechanical Engineering" ? " selected='selected'" : "" ?>>Mechanical Engineering</option>
         <option value="itm"<?= $_REQUEST["Major"] == "itm" ? " selected='selected'" : "" ?>>ITM</option>
@@ -72,14 +78,9 @@ $session_username= $_SESSION['username'];
       </form>
 
 <?php
-$course_id=$instructor_id=$semester="";
-if($_SERVER["REQUEST_METHOD"] == "GET"){
 $course_id = $instructor_id = $semester = "";
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
-  $major=$_GET["Major"];
-  $degree=$_GET["Degree"];
-  $sem=$_GET["Semester"];
     $major  = $_GET["Major"];
     $degree = $_GET["Degree"];
     $sem    = $_GET["Semester"];
