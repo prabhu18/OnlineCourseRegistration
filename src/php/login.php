@@ -7,7 +7,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   $paswordData= test_data($_POST["password"]);
 
   if(empty($usernameData)|| empty($paswordData)){
-    header("location:login.html");
+    header("location:registration.html");
     exit();
   }
   else{
@@ -15,26 +15,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $sql="SELECT password FROM cr_student WHERE user_id= '$usernameData'" ;
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
-
       while($row = mysqli_fetch_assoc($result)){
         $password= $row["password"];
       }
-    }else {
-      echo "<script>
-          alert('Incorrect username and password combination');
-            window.location.href='login.html';
-            </script>";
+      if (password_verify($paswordData, $password)) {
+            $_SESSION["username"] = $usernameData;
+          echo 1;
+      }else {
+              echo 0;
+      }
     }
-    if (password_verify($paswordData, $password)) {
-        header("location:homepage.php");
-    }else {
-      echo "password not matching";
-      echo "\nfetch password:".$password;
-      echo "\ngiven password:".$paswordData;
-
-      $_SESSION["username"] = $usernameData;
-      header("location:homepage.php");
-
+  else {
+      echo 2;
     }
   }
 }

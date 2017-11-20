@@ -21,6 +21,26 @@ $(document).ready(function () {
       	$("#pwd_error").addClass("error");
         event.preventDefault();
     }
+    if ($("#password").val() != "" && $("#username").val() != "" ) {
+      var uname = $("#username").val();
+      var pwd = $("#password").val();
+      variableString = 'username='+uname+'&password='+pwd;
+      $.ajax({
+      type: "POST",
+      url: "login.php",
+      data: variableString,
+      success: function(msg){
+        if (msg == 0) {
+          alert('Incorrect username and password combination');
+            window.location.href='login.html';
+        }else if(msg == 1) {
+          window.location.href='homepage.php';
+        }else {
+          alert('User does not exists, please register!');
+            window.location.href='registration.html';
+        }
+      }
+    });
+    }
   });
-
 });
