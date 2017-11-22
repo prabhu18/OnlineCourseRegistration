@@ -1,28 +1,32 @@
-CREATE DEFINER=`yuruk`@`%` PROCEDURE `show_my_history`(IN studentID varchar(10), IN currflag INT)
+CREATE DEFINER=`yuruk`@`%` PROCEDURE `view_all_courses`(IN indegree varchar(45),IN inbranch varchar(45), IN insemester varchar(45))
 BEGIN
 
-	if currflag=1 then
 
-		select b.course_id,b.instructor_id,b.semester,
-		c.name,a.grade_secured
-		from cr_course_student_instructor a
-		join cr_course_enrollment b on ( a.course_id=b.course_id and 
-		a.instructor_id=b.instructor_id and a.semester=b.semester)
-		join cr_instructors c on (a.instructor_id=c.instructor_id)
-		where a.student_id=studentID and b.curr_Sem=1;
-
-	else
-
-
-		select b.course_id,b.instructor_id,b.semester,
-		c.name,a.grade_secured
-		from cr_course_student_instructor a
-		join cr_course_enrollment b on ( a.course_id=b.course_id and 
-		a.instructor_id=b.instructor_id and a.semester=b.semester)
-		join cr_instructors c on (a.instructor_id=c.instructor_id)
-		where a.student_id=studentID and b.curr_Sem=0;
-
-
+	if indegree = 'all' then
+		set indegree=null;
 	end if;
+
+	if inbranch='all' then
+		set inbranch=null;
+	end if;
+
+
+	if insemester='all' then
+		set insemester=null;
+	end if;
+
+
+	select a.*,c.instructor_id,c.name,b.remaining_seats,
+	b.available_seats,b.class_no,b.class_start_time,
+	b.class_end_time,b.class_days,b.semester
+	from cr_course a
+	join cr_course_enrollment b on ( a.course_id=b.course_id)
+	join cr_instructors c on ( b.instructor_id=c.instructor_id)
+	where 
+		(indegree is null or a.degree=indegree)
+	and (inbranch is null or a.branch=inbranch)
+	and (insemester is null or b.semester=insemester)
+	group by b.course_id,b.instructor_id;
+
 
 END
